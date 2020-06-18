@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:JuceTest;assembly=JuceTest"
+             x:Class="JuceTest.TestToneView"
+             BindingContext="JuceTest.TestToneViewModel">
+    <ContentPage.BindingContext>
+        <local:TestToneViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout Padding="40" Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <Slider Value="{Binding SliderValue}" Minimum="0" Maximum="100" DragCompletedCommand="{Binding OnSilderChangedCommand}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Current Frequency: "/>
+                <Label Text="{Binding SliderValue, Converter={StaticResource FrequencyConvertor}}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Play" Command="{Binding StartCommand}"/><Button Text="Stop" Command="{Binding StopCommand}"/>
+            </StackLayout>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
